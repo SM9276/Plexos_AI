@@ -1,4 +1,4 @@
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings, PromptHelper, PromptHelper, StorageContext, load_index_from_storage
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings, StorageContext, load_index_from_storage
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.llms.ollama import Ollama
 
@@ -28,7 +28,7 @@ def load_index():
     return index
 
 
-# ChatIndex = construct_index(directory_path="/home/mangoblop/PycharmProjects/RAG/Extracted_Data")
+# ChatIndex = construct_index(directory_path="Extracted_Data")
 ChatIndex = load_index()
 leave = True
 while leave:
