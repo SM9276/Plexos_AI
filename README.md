@@ -10,8 +10,8 @@ To test, run the following and type a prompt:
     
     ollama run llama3.1 
 ### Second Step: Gather Data
-In my other repository there is a script that scrapes the PLEXOS help website to gather background 
-data about the program. Make a Folder/Directory in the project, in this script we call it Extracted_Data
+Create a folder/directory named Extracted_Data, place all the files you want to train your LLM on in this case, 
+we will be using well documented PLEXOS API code.
 
 ### Third Step: RAG Script
 Install the following dependencies 
@@ -19,8 +19,13 @@ Install the following dependencies
     pip install llama-index
     pip install llama-index-llms-ollama
     pip install llama_index.embeddings.huggingface
+note if you are using windows you have to do this extra step:
+    
+    pip uninstall torch
+    pip install torch==2.2
 
-The RAG.py has two functions 
+
+The RAG.py has three functions 
 
     construct_index()
         this function takes in a dirctory path, loads the files, then generates an index
@@ -28,11 +33,13 @@ The RAG.py has two functions
     
     load_index()
         this function takes the model Folder/Directory from the storage returns it as an index
+    
+    save_to_excel():
+        Saves query results to an Excel file. If the file exists, it prompts whether to append or overwrite.
+    
         
-### Fourth Step: Run the program
-This commented out line only needs to be ran when new data is placed in the folder to be indexed
-
-    ChatIndex = construct_index(directory_path="Extracted_Data")
-Once the model is generated then use the load_index() function instead.
-
-There a loop that asks for a prompt, if "quit" is entered then the program ends
+### Fourth Step: Run and create training data
+first time using the program you must call the construct_index to create a index. After it has been created 
+you can call the load_index() instead. After you ask a prompt, an answer will be generated, it will ask if you want 
+to save it by typing yes/y. After you create enough data that is saved in the excel file,
+we can upload this data for it to be fine tune the model.
