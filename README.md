@@ -39,7 +39,8 @@ The RAG.py has three functions
     
         
 ### Fourth Step: Run and create training data
-first time using the program you must call the construct_index to create a index. After it has been created 
-you can call the load_index() instead. After you ask a prompt, an answer will be generated, it will ask if you want 
-to save it by typing yes/y. After you create enough data that is saved in the excel file,
-we can upload this data for it to be fine tune the model.
+The first time using the program you must call the construct_index() to create an index. After it has been created you can call the load_index() instead.
+
+You can type a prompt press enter and a answer will be generated. It will ask if you want 
+to save it by typing yes/y. After you create enough data,
+we can upload this data for it used to fine tune a model.
